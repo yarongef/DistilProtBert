@@ -14,7 +14,7 @@ Secondary structure predicion (Q3):
 Results:
 |    **MODEL**   | **CASP12** | **TS115** | **CB513** |
 |:--------------:|:----------:|:---------:|:---------:|
-|    ProtBert    |    0.75    |    0.83   |    0.81   |
+|    ProtBert-UniRef100    |    0.75    |    0.83   |    0.81   |
 | DistilProtBert |    0.72    |    0.81   |    0.79   |
 
 ---------------------------------
@@ -26,7 +26,7 @@ Membrane vs water soluble (Q2) task:
 Results:
 |    **MODEL**   | **DeepLoc** |
 |:--------------:|:----------:|
-|    ProtBert    |    0.89    |  
+|    ProtBert-UniRef100    |    0.89    |  
 | DistilProtBert |    0.86    | 
 
 ----------------------------------
