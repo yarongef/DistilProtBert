@@ -13,4 +13,4 @@ For membrane vs water soluble (Q2) task:
 
 For real versus shuffled proteins classification task:
   1. Extract DistilProtBert features as shown in feature extraction notebook.
-  2. run inference notebook.
+  2. Run inference notebook.
