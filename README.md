@@ -1,5 +1,5 @@
 # DistilProtBert
-DistilProtBert implementation, a distilled version of ProtBert model.
+DistilProtBert implementation, a distilled version of ProtBert-UniRef100 model.
 
 Model available at https://huggingface.co/yarongef/DistilProtBert.
 
@@ -20,8 +20,8 @@ For membrane vs water soluble (Q2) task:
  Results:
  |    **MODEL**   | **DeepLoc** |
 |:--------------:|:----------:|
-|    ProtBert    |    0.75    |  
-| DistilProtBert |    0.72    | 
+|    ProtBert    |    0.89    |  
+| DistilProtBert |    0.86    | 
 
 For real versus shuffled proteins classification task:
   1. Extract DistilProtBert features as shown in feature extraction notebook.
