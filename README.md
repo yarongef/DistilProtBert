@@ -3,7 +3,7 @@ Official DistilProtBert implementation, a distilled version of ProtBert-UniRef10
 
 Model available at Hugging Face [page](https://huggingface.co/yarongef/DistilProtBert).
 
-This Repository is based on ProtBert-UniRef100 implementation from [ProtTrans repo](https://github.com/agemagician/ProtTrans).
+This repository is based on ProtBert-UniRef100 implementation from [ProtTrans repo](https://github.com/agemagician/ProtTrans).
 
 **Evaluation tasks**
 ========================
