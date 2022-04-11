@@ -32,6 +32,6 @@ Results:
 ----------------------------------
 
 Real versus shuffled proteins classification task:
-  1. Download singlet/doublet/triplet classification model from [here](https://www.dropbox.com/sh/221eiziowdg5m5e/AADh_f8DO_Tn9r56S1QbpyaHa?dl=0)
+  1. Download singlet/doublet/triplet classification models from [here](https://www.dropbox.com/sh/221eiziowdg5m5e/AADh_f8DO_Tn9r56S1QbpyaHa?dl=0)
   1. Extract test set features via [feature extraction notebook](https://github.com/yarongef/DistilProtBert/blob/main/Real%20vs.%20Shuffled%20Classification%20task/Feature%20Extraction.ipynb)
   2. Run [inference notebook](https://github.com/yarongef/DistilProtBert/blob/main/Real%20vs.%20Shuffled%20Classification%20task/Inference.ipynb)
