@@ -33,7 +33,7 @@ Membrane vs water soluble (Q2) task:
   2. Change *model_init* first argument to:
 
     def model_init():
-        return AutoModelForSequenceClassification.from_pretrained(model_name)
+        return AutoModelForSequenceClassification.from_pretrained('yarongef/DistilProtBert')
  
 Results:
 |    **MODEL**   | **DeepLoc** |
