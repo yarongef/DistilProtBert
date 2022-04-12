@@ -11,7 +11,17 @@ This repository is based on ProtBert-UniRef100 implementation from [ProtTrans re
 ========================
 Secondary structure predicion (Q3):
   1. Please follow [SS3 fine tuning notebook](https://github.com/agemagician/ProtTrans/blob/master/Fine-Tuning/ProtBert-BFD-FineTune-SS3.ipynb) 
-  2. Set *model_name* to 'yarongef/DistilProtBert'
+  2. Update stage 11 to:
+      
+
+    def model_init():
+        return AutoModelForTokenClassification.from_pretrained('yarongef/DistilProtBert',
+                                                               num_labels=len(unique_tags),
+                                                               id2label=id2tag,
+                                                               label2id=tag2id,
+                                                               gradient_checkpointing=False)
+
+
 
 Results:
 |    **MODEL**   | **CASP12** | **TS115** | **CB513** |
