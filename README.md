@@ -10,7 +10,7 @@ Datasets for real versus shuffled protein sequences classification task are avai
  - [Doublets](https://huggingface.co/datasets/yarongef/human_proteome_doublets)
  - [Triplets](https://huggingface.co/datasets/yarongef/human_proteome_triplets)
 
-This repository is based on ProtBert-UniRef100 implementation from [ProtTrans repo](https://github.com/agemagician/ProtTrans).
+This repository is based on ProtBert-UniRef100 implementation from [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
 
 ## **Evaluation tasks**
 
