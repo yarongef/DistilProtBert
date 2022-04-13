@@ -12,7 +12,7 @@ Datasets for real versus shuffled protein sequences classification task are avai
 
 This repository is based on ProtBert-UniRef100 implementation from [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
 
-## **Comparison to ProtBert**
+## **Model details**
 |    **Model**   | **# of parameters** | **# of hidden layers** | **Pretraining dataset** | **# of pretraining sequences** | **Pretraining hardware** |
 |:--------------:|:-------------------:|:----------------------:|:-----------------------:|:------------------------------:|:------------------------:|
 |    ProtBert    |         420M        |           30           |        UniRef100        |              216M              |       512 16GB Tpus      |
