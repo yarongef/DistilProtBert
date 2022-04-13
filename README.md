@@ -52,11 +52,23 @@ Please follow [MS fine tuning notebook](https://github.com/agemagician/ProtTrans
   2. Extract the relevant k-let test set features via [feature extraction notebook](https://github.com/yarongef/DistilProtBert/blob/main/Feature%20Extraction/Feature%20Extraction.ipynb)
   3. Run [inference notebook](https://github.com/yarongef/DistilProtBert/blob/main/Inference/Inference.ipynb)
 
-#### Singlets
-ddd
+_Singlet_
+|    **Model**   | **AUC** |
+|:--------------:|:-------:|
+|      LSTM      |   0.71  |
+|    ProtBert    |   0.93  |
+| DistilProtBert |   0.92  |
 
-#### Doublets
-ddd
+_Doublet_
+|    **Model**   | **AUC** |
+|:--------------:|:-------:|
+|      LSTM      |   0.68  |
+|    ProtBert    |   0.92  |
+| DistilProtBert |   0.91  |
 
-#### Triplets
-ddd
+_Triplet_
+|    **Model**   | **AUC** |
+|:--------------:|:-------:|
+|      LSTM      |   0.61  |
+|    ProtBert    |   0.92  |
+| DistilProtBert |   0.87  |
