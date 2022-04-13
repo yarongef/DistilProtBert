@@ -1,7 +1,7 @@
 # DistilProtBert
 Official DistilProtBert implementation, a distilled version of ProtBert-UniRef100 model.
 
-Model available at Hugging Face model [page](https://huggingface.co/yarongef/DistilProtBert).
+Model details available at Hugging Face model [page](https://huggingface.co/yarongef/DistilProtBert).
 
 Pretraining dataset: [UniRef50](https://www.uniprot.org/downloads)
 
@@ -11,6 +11,12 @@ Datasets for real versus shuffled protein sequences classification task are avai
  - [Triplets](https://huggingface.co/datasets/yarongef/human_proteome_triplets)
 
 This repository is based on ProtBert-UniRef100 implementation from [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
+
+## **Comparison to ProtBert**
+|    **Model**   | **# of parameters** | **# of hidden layers** | **Pretraining dataset** | **# of pretraining sequences** | **Pretraining hardware** |
+|:--------------:|:-------------------:|:----------------------:|:-----------------------:|:------------------------------:|:------------------------:|
+|    ProtBert    |         420M        |           30           |        UniRef100        |              216M              |       512 16GB Tpus      |
+| DistilProtBert |         230M        |           15           |         UniRef50        |               43M              |     5 v100 32GB GPUs     |
 
 ## **Evaluation tasks**
 
