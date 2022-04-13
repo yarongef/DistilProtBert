@@ -15,7 +15,7 @@ This repository is based on ProtBert-UniRef100 implementation from [ProtTrans](h
 ## **Model details**
 |    **Model**   | **# of parameters** | **# of hidden layers** | **Pretraining dataset** | **# of proteins** | **Pretraining hardware** |
 |:--------------:|:-------------------:|:----------------------:|:-----------------------:|:------------------------------:|:------------------------:|
-|    ProtBert    |         420M        |           30           |        [UniRef100](https://www.uniprot.org/downloads)       |              216M              |       512 16GB Tpus      |
+|    ProtBert    |         420M        |           30           |        [UniRef100](https://www.uniprot.org/downloads)       |              216M              |       512 16GB TPUs      |
 | DistilProtBert |         230M        |           15           |         [UniRef50](https://www.uniprot.org/downloads)        |               43M              |     5 v100 32GB GPUs     |
 
 ## **Evaluation tasks**
