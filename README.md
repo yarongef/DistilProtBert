@@ -3,7 +3,7 @@ Official DistilProtBert implementation, a distilled version of ProtBert-UniRef10
 
 Model details available at Hugging Face model [page](https://huggingface.co/yarongef/DistilProtBert).
 
-Pretraining dataset: [UniRef50](https://www.uniprot.org/downloads)
+
 
 Datasets for real versus shuffled protein sequences classification task are available at:
  - [Singlets](https://huggingface.co/datasets/yarongef/human_proteome_singlets)
@@ -15,8 +15,8 @@ This repository is based on ProtBert-UniRef100 implementation from [ProtTrans](h
 ## **Model details**
 |    **Model**   | **# of parameters** | **# of hidden layers** | **Pretraining dataset** | **# of proteins** | **Pretraining hardware** |
 |:--------------:|:-------------------:|:----------------------:|:-----------------------:|:------------------------------:|:------------------------:|
-|    ProtBert    |         420M        |           30           |        UniRef100        |              216M              |       512 16GB Tpus      |
-| DistilProtBert |         230M        |           15           |         UniRef50        |               43M              |     5 v100 32GB GPUs     |
+|    ProtBert    |         420M        |           30           |        [UniRef100](https://www.uniprot.org/downloads)       |              216M              |       512 16GB Tpus      |
+| DistilProtBert |         230M        |           15           |         [UniRef50](https://www.uniprot.org/downloads)        |               43M              |     5 v100 32GB GPUs     |
 
 ## **Evaluation tasks**
 
