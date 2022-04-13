@@ -49,5 +49,14 @@ Please follow [MS fine tuning notebook](https://github.com/agemagician/ProtTrans
 ### Real versus shuffled proteins classification
 
   1. Download the relevant k-let classification model from [here](https://www.dropbox.com/sh/221eiziowdg5m5e/AADh_f8DO_Tn9r56S1QbpyaHa?dl=0)
-  2. Extract the relevant k-let test set features via [feature extraction notebook](https://github.com/yarongef/DistilProtBert/blob/main/Real%20vs.%20Shuffled%20Classification%20task/Feature%20Extraction.ipynb)
-  2. Run [inference notebook](https://github.com/yarongef/DistilProtBert/blob/main/Real%20vs.%20Shuffled%20Classification%20task/Inference.ipynb)
+  2. Extract the relevant k-let test set features via [feature extraction notebook](https://github.com/yarongef/DistilProtBert/blob/main/Feature%20Extraction/Feature%20Extraction.ipynb)
+  3. Run [inference notebook](https://github.com/yarongef/DistilProtBert/blob/main/Inference/Inference.ipynb)
+
+#### Singlets
+ddd
+
+#### Doublets
+ddd
+
+#### Triplets
+ddd
