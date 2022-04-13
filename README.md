@@ -12,7 +12,7 @@ Datasets for real versus shuffled protein sequences classification task are avai
 
 This repository is based on ProtBert-UniRef100 implementation from [ProtTrans repo](https://github.com/agemagician/ProtTrans).
 
-# **Evaluation tasks**
+## **Evaluation tasks**
 
 ### Secondary structure predicion (Q3)
 Please follow [SS3 fine tuning notebook](https://github.com/agemagician/ProtTrans/blob/master/Fine-Tuning/ProtBert-BFD-FineTune-SS3.ipynb) and change *model_init* first argument to 'yarongef/DistilProtBert'.
@@ -48,9 +48,9 @@ Please follow [MS fine tuning notebook](https://github.com/agemagician/ProtTrans
 
 ### Real versus shuffled proteins classification
 
-  1. Download the relevant k-let classification model from [here](https://www.dropbox.com/sh/221eiziowdg5m5e/AADh_f8DO_Tn9r56S1QbpyaHa?dl=0)
-  2. Extract the relevant k-let test set features via [feature extraction notebook](https://github.com/yarongef/DistilProtBert/blob/main/Feature%20Extraction/Feature%20Extraction.ipynb)
-  3. Run [inference notebook](https://github.com/yarongef/DistilProtBert/blob/main/Inference/Inference.ipynb)
+- Download the relevant k-let classification model from [here](https://www.dropbox.com/sh/221eiziowdg5m5e/AADh_f8DO_Tn9r56S1QbpyaHa?dl=0)
+- Extract the relevant k-let test set features via [feature extraction notebook](https://github.com/yarongef/DistilProtBert/blob/main/Feature%20Extraction/Feature%20Extraction.ipynb)
+- Run [inference notebook](https://github.com/yarongef/DistilProtBert/blob/main/Inference/Inference.ipynb)
 
 _Singlet_
 |    **Model**   | **AUC** |
