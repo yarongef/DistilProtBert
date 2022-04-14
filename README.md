@@ -37,7 +37,7 @@ Datasets can be found at [ProtTrans](https://github.com/agemagician/ProtTrans) r
 ---------------------------------
 
 ### Membrane vs water soluble (Q2)
-Please follow [MS fine tuning notebook](https://github.com/agemagician/ProtTrans/blob/master/Fine-Tuning/ProtBert-BFD-FineTuning-MS.ipynb) and change *model_init* first argument to 'yarongef/DistilProtBert'
+Please follow [MS fine tuning notebook](https://github.com/agemagician/ProtTrans/blob/master/Fine-Tuning/ProtBert-BFD-FineTuning-MS.ipynb) and change *model_init* first argument to 'yarongef/DistilProtBert'.
 
     def model_init():
         return AutoModelForSequenceClassification.from_pretrained('yarongef/DistilProtBert')
@@ -54,9 +54,9 @@ Datasets can be found at [ProtTrans](https://github.com/agemagician/ProtTrans) r
 
 ### Distinguish between proteins and their k-let shuffled versions 
 
-[Notebook](https://github.com/yarongef/DistilProtBert/blob/main/Datasets/Human%20Proteome.ipynb) for creating the datasets
+[Notebook](https://github.com/yarongef/DistilProtBert/blob/main/Datasets/Human%20Proteome.ipynb) for creating the datasets.
 
-Datasets can be found at [singlets](https://huggingface.co/datasets/yarongef/human_proteome_singlets), [doublets](https://huggingface.co/datasets/yarongef/human_proteome_doublets) and [triplets](https://huggingface.co/datasets/yarongef/human_proteome_triplets)
+Datasets can be found at [singlets](https://huggingface.co/datasets/yarongef/human_proteome_singlets), [doublets](https://huggingface.co/datasets/yarongef/human_proteome_doublets) and [triplets](https://huggingface.co/datasets/yarongef/human_proteome_triplets).
 
 - Download the relevant k-let classification model from [here](https://www.dropbox.com/sh/221eiziowdg5m5e/AADh_f8DO_Tn9r56S1QbpyaHa?dl=0)
 - Extract the relevant k-let test set features via [feature extraction notebook](https://github.com/yarongef/DistilProtBert/blob/main/Feature%20Extraction/Feature%20Extraction.ipynb)
