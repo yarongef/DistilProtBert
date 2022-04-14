@@ -30,6 +30,8 @@ Please follow [SS3 fine tuning notebook](https://github.com/agemagician/ProtTran
                                                                label2id=tag2id,
                                                                gradient_checkpointing=False)
 
+Datasets can be found at [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
+
 #### Results
 |    **MODEL**   | **CASP12** | **TS115** | **CB513** |
 |:--------------:|:----------:|:---------:|:---------:|
@@ -43,7 +45,9 @@ Please follow [MS fine tuning notebook](https://github.com/agemagician/ProtTrans
 
     def model_init():
         return AutoModelForSequenceClassification.from_pretrained('yarongef/DistilProtBert')
- 
+
+Datasets can be found at [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
+
 #### Results
 |    **MODEL**   | **DeepLoc** |
 |:--------------:|:----------:|
