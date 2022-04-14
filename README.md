@@ -54,12 +54,12 @@ Datasets can be found at [ProtTrans](https://github.com/agemagician/ProtTrans) r
 
 ### Distinguish between proteins and their k-let shuffled versions 
 
+Datasets [notebook](https://github.com/yarongef/DistilProtBert/blob/main/Datasets/Human%20Proteome.ipynb) 
+Datasets can be found at [singlets](https://huggingface.co/datasets/yarongef/human_proteome_singlets), [doublets](https://huggingface.co/datasets/yarongef/human_proteome_doublets) and [triplets](https://huggingface.co/datasets/yarongef/human_proteome_triplets)
+
 - Download the relevant k-let classification model from [here](https://www.dropbox.com/sh/221eiziowdg5m5e/AADh_f8DO_Tn9r56S1QbpyaHa?dl=0)
 - Extract the relevant k-let test set features via [feature extraction notebook](https://github.com/yarongef/DistilProtBert/blob/main/Feature%20Extraction/Feature%20Extraction.ipynb)
 - Run [inference notebook](https://github.com/yarongef/DistilProtBert/blob/main/Inference/Inference.ipynb)
-
-
-Datasets can be found at [singlets](https://huggingface.co/datasets/yarongef/human_proteome_singlets), [doublets](https://huggingface.co/datasets/yarongef/human_proteome_doublets) and [triplets](https://huggingface.co/datasets/yarongef/human_proteome_triplets)
 
 _Singlet_
 |    **Model**   | **AUC** |
