@@ -1,4 +1,7 @@
-# DistilProtBert
+<br/>
+<h1 align="center">DistilProtBert</h1>
+<br/>
+
 Official DistilProtBert implementation, a distilled version of ProtBert-UniRef100 model.
 
 Model details available at Hugging Face model [page](https://huggingface.co/yarongef/DistilProtBert).
