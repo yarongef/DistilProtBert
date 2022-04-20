@@ -83,5 +83,9 @@ _Triplet_
 |    ProtBert    |   0.92  |
 | DistilProtBert |   0.87  |
 
+## **Contact**
+[Create an issue](https://github.com/yarongef/DistilProtBert/issues) to report bugs,
+propose new functions or ask for help.
+
 ## **License**
 [MIT License](https://github.com/yarongef/DistilProtBert/blob/main/LICENSE)
