@@ -6,6 +6,8 @@ Official DistilProtBert implementation, a distilled version of ProtBert-UniRef10
 
 Model details available at Hugging Face model [page](https://huggingface.co/yarongef/DistilProtBert).
 
+Pretraining dataset: [UniRef50](https://github.com/yarongef/DistilProtBert/blob/main/Datasets/UniRef50.ipynb)
+
 This repository is based on ProtBert-UniRef100 implementation from [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
 
 ## **Model details**
