@@ -82,3 +82,6 @@ _Triplet_
 |      LSTM      |   0.61  |
 |    ProtBert    |   0.92  |
 | DistilProtBert |   0.87  |
+
+## **License**
+[MIT License](https://github.com/yarongef/DistilProtBert/blob/main/LICENSE)
