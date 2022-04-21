@@ -18,8 +18,8 @@ This repository is based on ProtBert-UniRef100 implementation from [ProtTrans](h
 
 ## **Evaluation tasks**
 
-### Secondary structure predicion (Q3)
-Please follow [SS3 fine tuning notebook](https://github.com/agemagician/ProtTrans/blob/master/Fine-Tuning/ProtBert-BFD-FineTune-SS3.ipynb) and change *model_init* first argument to 'yarongef/DistilProtBert'.
+### Secondary structure prediction (Q3)
+Please follow [SS3 fine-tuning notebook](https://github.com/agemagician/ProtTrans/blob/master/Fine-Tuning/ProtBert-BFD-FineTune-SS3.ipynb) and change *model_init* first argument to 'yarongef/DistilProtBert'.
       
     def model_init():
         return AutoModelForTokenClassification.from_pretrained('yarongef/DistilProtBert',
@@ -39,7 +39,7 @@ Datasets can be found at [ProtTrans](https://github.com/agemagician/ProtTrans) r
 ---------------------------------
 
 ### Membrane vs water soluble (Q2)
-Please follow [MS fine tuning notebook](https://github.com/agemagician/ProtTrans/blob/master/Fine-Tuning/ProtBert-BFD-FineTuning-MS.ipynb) and change *model_init* first argument to 'yarongef/DistilProtBert'.
+Please follow [MS fine-tuning notebook](https://github.com/agemagician/ProtTrans/blob/master/Fine-Tuning/ProtBert-BFD-FineTuning-MS.ipynb) and change *model_init* first argument to 'yarongef/DistilProtBert'.
 
     def model_init():
         return AutoModelForSequenceClassification.from_pretrained('yarongef/DistilProtBert')
