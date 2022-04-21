@@ -11,10 +11,10 @@ Pretraining dataset: [UniRef50](https://github.com/yarongef/DistilProtBert/blob/
 This repository is based on ProtBert-UniRef100 implementation from [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
 
 ## **Model details**
-|    **Model**   | **# of parameters** | **# of hidden layers** | **Pretraining dataset** | **# of proteins** | **Pretraining hardware** |
-|:--------------:|:-------------------:|:----------------------:|:-----------------------:|:------------------------------:|:------------------------:|
-|    ProtBert    |         420M        |           30           |        [UniRef100](https://www.uniprot.org/downloads)       |              216M              |       512 16GB TPUs      |
-| DistilProtBert |         230M        |           15           |         [UniRef50](https://www.uniprot.org/downloads)        |               43M              |     5 v100 32GB GPUs     |
+|   **Model**    | **# of parameters** | **# of hidden layers** |            **Pretraining dataset**             | **# of proteins** | **Pretraining hardware** |
+|:--------------:|:-------------------:|:----------------------:|:----------------------------------------------:|:-----------------:|:------------------------:|
+|    ProtBert    |        420M         |           30           | [UniRef100](https://www.uniprot.org/downloads) |       216M        |      512 16GB TPUs       |
+| DistilProtBert |        230M         |           15           | [UniRef50](https://www.uniprot.org/downloads)  |        43M        |     5 v100 32GB GPUs     |
 
 ## **Evaluation tasks**
 
@@ -31,10 +31,10 @@ Please follow [SS3 fine-tuning notebook](https://github.com/agemagician/ProtTran
 Datasets can be found at [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
 
 #### Results
-|    **MODEL**   | **CASP12** | **TS115** | **CB513** |
-|:--------------:|:----------:|:---------:|:---------:|
-|    ProtBert-UniRef100    |    0.75    |    0.83   |    0.81   |
-| DistilProtBert |    0.72    |    0.81   |    0.79   |
+|     **MODEL**      | **CASP12** | **TS115** | **CB513** |
+|:------------------:|:----------:|:---------:|:---------:|
+| ProtBert-UniRef100 |    0.75    |   0.83    |   0.81    |
+|   DistilProtBert   |    0.72    |   0.81    |   0.79    |
 
 ---------------------------------
 
@@ -47,10 +47,10 @@ Please follow [MS fine-tuning notebook](https://github.com/agemagician/ProtTrans
 Datasets can be found at [ProtTrans](https://github.com/agemagician/ProtTrans) repository.
 
 #### Results
-|    **MODEL**   | **DeepLoc** |
-|:--------------:|:----------:|
-|    ProtBert-UniRef100    |    0.89    |  
-| DistilProtBert |    0.86    | 
+|     **MODEL**      | **DeepLoc** |
+|:------------------:|:-----------:|
+| ProtBert-UniRef100 |    0.89     |  
+|   DistilProtBert   |    0.86     | 
 
 ----------------------------------
 
