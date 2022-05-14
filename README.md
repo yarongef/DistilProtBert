@@ -4,6 +4,8 @@
 
 Official DistilProtBert implementation, a distilled version of ProtBert-UniRef100 model.
 
+Check out our paper [DistilProtBert: A distilled protein language model used to distinguish between real proteins and their randomly shuffled counterparts](https://www.biorxiv.org/content/10.1101/2022.05.09.491157v1) for more details.
+
 Model details available at Hugging Face model [page](https://huggingface.co/yarongef/DistilProtBert).
 
 Pretraining dataset: [UniRef50](https://github.com/yarongef/DistilProtBert/blob/main/Datasets/UniRef50.ipynb)
