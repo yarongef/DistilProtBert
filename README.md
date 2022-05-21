@@ -93,3 +93,17 @@ propose new functions or ask for help.
 
 ## **License**
 [MIT License](https://github.com/yarongef/DistilProtBert/blob/main/LICENSE)
+
+## **Citation**
+If you use this code or one of our pretrained models for your publication, please cite our paper:
+```
+@article {
+	author = {Geffen, Yaron and Ofran, Yanay and Unger, Ron},
+	title = {DistilProtBert: A distilled protein language model used to distinguish between real proteins and their randomly shuffled counterparts},
+	year = {2022},
+	doi = {10.1101/2022.05.09.491157},
+	URL = {https://www.biorxiv.org/content/early/2022/05/10/2022.05.09.491157},
+	eprint = {https://www.biorxiv.org/content/early/2022/05/10/2022.05.09.491157.full.pdf},
+	journal = {bioRxiv}
+}
+```
