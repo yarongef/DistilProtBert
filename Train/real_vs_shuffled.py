@@ -216,9 +216,6 @@ if __name__ == '__main__':
         X_train, X_val = fold_data['x_train'], fold_data['x_val']
         y_train, y_val = fold_data['y_train'], fold_data['y_val']
 
-        print(f'number of train samples for each label: {Counter(np.array(y_train))}')
-        print(f'number of validation samples for each label: {Counter(np.array(y_val))}')
-
         train_dataset = TensorDataset(X_train, y_train)
         train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=False, drop_last=True)
         val_dataset = TensorDataset(X_val, y_val)
