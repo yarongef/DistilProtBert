@@ -240,17 +240,76 @@ def load_data(natural_path, shuffled_path):
 
 
 def get_fold(x_chunks, y_chunks, folds, current_split):
+    """Build a data fold
+
+    Parameters
+    ----------
+    x_chunks : list of torch.Tensor(s)
+        Chunks of the natural & shuffled proteins sequences embeddings
+
+    y_chunks : list of torch.Tensor(s)
+        Chunks of the natural & shuffled labels
+
+    folds : int
+        Number of folds
+
+    current_split : int
+        which data chunk will be used as validation set, and therefore
+        will not be included in the training data
+
+    Returns
+    -------
+    (x_fold, y_fold) : (torch.Tensor, torch.Tensor)
+        Training fold data and labels
+    """
     x_fold = torch.vstack([x_chunks[j] for j in range(folds) if j != current_split])
     y_fold = torch.hstack([y_chunks[j] for j in range(folds) if j != current_split])
     return x_fold, y_fold
 
 
 def shuffle_fold(x_fold, y_fold):
+    """Shuffle the samples in the fold
+
+    x_fold : torch.Tensor
+        the samples consisting a fold
+
+    y_fold : torch.Tensor
+        the labels of the fold
+
+    Returns
+    -------
+    (x_fold, y_fold) : (torch.Tensor, torch.Tensor)
+        shuffled fold (data and labels)
+    """
     fold_perm = torch.randperm(x_fold.shape[0])
     return x_fold[fold_perm], y_fold[fold_perm]
 
 
 def get_folds(x_n_chunks, x_s_chunks, y_n_chunks, y_s_chunks, folds):
+    """Constructs different fold from the chunks of data
+
+    Parameters
+    ----------
+    x_n_chunks : list of torch.Tensor(s)
+        Chunks of the natural proteins sequences embeddings
+
+    x_s_chunks : list of torch.Tensor(s)
+        Chunks of the shuffled proteins sequences embeddings
+
+    y_n_chunks : list of torch.Tensor(s)
+        Chunks of the natural proteins sequences labels
+
+    y_s_chunks : list of torch.Tensor(s)
+        Chunks of the shuffled proteins sequences labels
+
+    folds : int
+        Number of folds
+
+    Returns
+    -------
+    all_folds : list
+        List of dictionaries, each one contains a fold: x_train, y_train, x_val, y_val
+    """
     all_folds = []
 
     for i in range(folds):
@@ -275,12 +334,35 @@ def get_folds(x_n_chunks, x_s_chunks, y_n_chunks, y_s_chunks, folds):
 
 
 def split_data(natural_proteins_embeddings_path, shuffled_sequences_embeddings_path, folds):
+    """Splits the data (natural & shuffled proteins sequences embeddings) to different folds,
+    for a cross-validation procedure
+
+    Parameters
+    ----------
+    natural_proteins_embeddings_path : str
+        Absolute path of the natural proteins sequences embeddings from DistilProtBert model
+
+    shuffled_sequences_embeddings_path : str
+        Absolute path of the shuffled proteins sequences embeddings from DistilProtBert model
+
+    folds : int
+        number of folds of the cross-validation procedure
+
+    Returns
+    -------
+    list
+        List of dictionaries, each one contains a fold: x_train, y_train, x_val, y_val
+    """
     x_train_natural, x_train_shuffled = load_data(natural_proteins_embeddings_path, shuffled_sequences_embeddings_path)
+
+    # Initialize labels
     y_train_ones = torch.ones((len(x_train_natural)))
     y_train_zeros = torch.zeros((len(x_train_shuffled)))
 
-    chunk_size = len(x_train_natural) // 10
+    # Set chunk size
+    chunk_size = len(x_train_natural) // folds
 
+    # Split data to chunks
     x_natural_chunks = torch.split(x_train_natural, chunk_size)
     x_shuffled_chunks = torch.split(x_train_shuffled, chunk_size)
 
