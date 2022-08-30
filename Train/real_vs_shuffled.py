@@ -372,7 +372,7 @@ def split_data(natural_proteins_embeddings_path, shuffled_sequences_embeddings_p
 
 
 def trim_zeros_from_metrics(folds_num, metrics_dic):
-    """Trim zeros at the end of each epochs metric,
+    """Trim zeros at the end of each epoch's fold metric,
     since using early stopping each fold ends at a different epoch
 
     Parameters
