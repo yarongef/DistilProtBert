@@ -373,6 +373,23 @@ def split_data(natural_proteins_embeddings_path, shuffled_sequences_embeddings_p
 
 
 def trim_zeros_from_metrics(folds_num, metrics_dic):
+    """Trim zeros at the end of each epochs metric,
+    since using early stopping each fold ends at a different epoch
+
+    Parameters
+    ----------
+    folds_num : int
+        Number of folds
+
+    metrics_dic : dict
+        dictionary which consists the different validation measurements for each epoch per fold
+
+    Returns
+    -------
+    metrics_trimmed_dic : dict
+        dictionary which consists the different validation measurements for each epoch per fold,
+        without ending zeros
+    """
     metrics_trimmed_dic = {i: 0 for i in range(folds_num)}
     for i, epochs_metric in enumerate(metrics_dic):
         metrics_trimmed_dic[i] = np.trim_zeros(epochs_metric, trim='b')
@@ -380,6 +397,18 @@ def trim_zeros_from_metrics(folds_num, metrics_dic):
 
 
 def get_final_metric_from_each_fold(metric_folds_dic):
+    """Get the final validation metric (last epoch) for each fold
+
+    Parameters
+    ----------
+    metric_folds_dic : dict
+        trimmed dictionary of the different validation measurements for each epoch per fold
+
+    Returns
+    -------
+    list
+        final measurements (last epoch) for each fold
+    """
     return [metric_folds_dic[fold_i][-1] for fold_i in metric_folds_dic]
 
 
@@ -405,9 +434,10 @@ if __name__ == '__main__':
     num_epochs = args.n_epochs
     num_folds = args.n_folds
 
+    # Split data into different folds for cross-validation procedure
     data_folds = split_data(args.proteins_embeddings_file_path, args.shuffled_sequences_file_path, num_folds)
 
-    # log results
+    # Initialize dict(s) to save metrics values during training and validation
     results_train_folds = {'loss': np.zeros(shape=(num_folds, num_epochs)),
                            'acc': np.zeros(shape=(num_folds, num_epochs))}
     eval_folds = {'loss': np.zeros(shape=(num_folds, num_epochs)), 'Accuracy': np.zeros(shape=(num_folds, num_epochs)),
@@ -424,7 +454,7 @@ if __name__ == '__main__':
 
         writer = SummaryWriter(log_dir=fold_log_dir)
 
-        # split data to train & validation
+        # Split data to train & validation
         X_train, X_val = fold_data['x_train'], fold_data['x_val']
         y_train, y_val = fold_data['y_train'], fold_data['y_val']
 
@@ -433,7 +463,7 @@ if __name__ == '__main__':
         val_dataset = TensorDataset(X_val, y_val)
         val_loader = DataLoader(dataset=val_dataset, batch_size=args.batch_size, shuffle=False, drop_last=True)
 
-        # init model
+        # Initialize model
         cls_nn = ClassifyNetwork(args.nn_dimensions, args.dropout_rate)
         print('classifier network architecture:')
         summary(cls_nn)
@@ -441,18 +471,18 @@ if __name__ == '__main__':
         cls_nn.to(device)
         optimizer = optim.RAdam(cls_nn.parameters(), lr=args.lr, eps=1e-08)
 
-        # early stopping params
+        # Set early stopping params
         curr_best_val_loss = 10.0
         patience = 2
 
-        # train model
+        # Train model
         for epoch in range(num_epochs):
             print(f'epoch number: {epoch + 1}')
             train_loss, train_acc = train_model(cls_nn, train_loader, optimizer)
             results_train_folds['loss'][fold, epoch] = train_loss
             results_train_folds['acc'][fold, epoch] = train_acc
 
-            # evaluate model
+            # Evaluate model
             val_loss, val_metrics = eval_model(cls_nn, val_loader)
             eval_folds['loss'][fold, epoch] = val_loss
             eval_folds['Accuracy'][fold, epoch] = val_metrics['Accuracy']
@@ -461,6 +491,7 @@ if __name__ == '__main__':
             eval_folds['Recall'][fold, epoch] = val_metrics['Recall']
             eval_folds['AUC'][fold, epoch] = val_metrics['AUC']
 
+            # Log measurements to tensorboard
             writer.add_scalar("Loss/train", train_loss, epoch)
             writer.add_scalar("Accuracy/train", train_acc, epoch)
             writer.add_scalar("Loss/eval", val_loss, epoch)
@@ -481,9 +512,10 @@ if __name__ == '__main__':
                 if patience == 0:
                     break
 
-        # save model (per fold) state dict
+        # Save model state dict (per fold)
         torch.save(cls_nn.state_dict(), args.output_dir+f'model_fold_{fold}.pt')
 
+        # Save tensorboard logs for the specific fold
         writer.flush()
         writer.close()
 
@@ -502,10 +534,14 @@ if __name__ == '__main__':
     auc = get_final_metric_from_each_fold(eval_auc)
 
     print()
+
+    # Print the average of the metrics over number of folds
     print('avg loss:', np.average(loss))
     print('avg acc:', np.average(acc))
     print('avg f1:', np.average(f1))
     print('avg precision:', np.average(precision))
     print('avg recall:', np.average(recall))
     print('avg auc:', np.average(auc))
+
+    # Print the best AUC and the relevant fold number
     print(f'best auc is: {max(auc)}, fold number: {np.argmax(auc)}')
