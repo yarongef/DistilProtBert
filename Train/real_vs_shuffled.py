@@ -1,3 +1,4 @@
+# Imports
 import os
 import argparse
 import numpy as np
@@ -9,7 +10,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score
 
-
+# Constants
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 criterion = nn.BCELoss()
 
