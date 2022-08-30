@@ -2,7 +2,6 @@
 import os
 import argparse
 import numpy as np
-from collections import Counter
 import torch
 from torch import nn, optim
 from torchinfo import summary
@@ -91,10 +90,10 @@ def compute_metrics(labels, predictions):
 
     Parameters
     ----------
-    labels : torch.Tensor
+    labels : list of torch.Tensor
         Real labels of the data
 
-    predictions : torch.Tensor
+    predictions : list of torch.Tensor
         Model classifications of the data
 
     Returns
@@ -381,8 +380,8 @@ def trim_zeros_from_metrics(folds_num, metrics_dic):
     folds_num : int
         Number of folds
 
-    metrics_dic : dict
-        dictionary which consists the different validation measurements for each epoch per fold
+    metrics_dic : np.ndarray
+        Numpy array which consists the different validation measurements for each epoch per fold
 
     Returns
     -------
