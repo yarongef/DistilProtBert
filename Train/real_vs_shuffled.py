@@ -16,21 +16,52 @@ criterion = nn.BCELoss()
 
 
 class ClassifyNetwork(nn.Module):
+    """
+    A class used to represent a feed-forward neural network classifier
+
+    Attributes
+    ----------
+    layers_dims : list
+        The dimensions of the neural network
+    dropout_rate : float
+        The dropout rate to be used in the network
+
+    Methods
+    -------
+    forward(x)
+        Forward pass of the neural network on input x
+    """
     def __init__(self, layers_dims, dropout_rate):
         super(ClassifyNetwork, self).__init__()
 
+        # 1st layer + ReLU activation function
         self.linear = nn.Linear(layers_dims[0], layers_dims[1])
         self.act1 = nn.ReLU()
 
+        # 2nd layer + ReLU activation function
         self.linear2 = nn.Linear(layers_dims[1], layers_dims[2])
         self.act2 = nn.ReLU()
 
+        # 3rd layer + Sigmoid activation function
         self.linear3 = nn.Linear(layers_dims[2], 1)
         self.act3 = nn.Sigmoid()
 
         self.dropout = nn.Dropout(dropout_rate)
 
     def forward(self, x):
+        """Forward pass of the neural network on input x
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input data of shape NxM where N equals the batch size
+            and M equals the number of features
+
+        Returns
+        -------
+        torch.Tensor
+            Classification of each example from the input data, shape N
+        """
         x = self.act1(self.linear(x))
         x = self.dropout(x)
         x = self.act2(self.linear2(x))
@@ -38,14 +69,40 @@ class ClassifyNetwork(nn.Module):
         x = self.act3(self.linear3(x))
         return x.squeeze()
 
+# Helper Functions
+
 
 def initialize_weights(model):
+    """Initialize neural network weights using xavier method,
+    also initializes the biases of the network to zero
+
+    Parameters
+    ----------
+    model : ClassifyNetwork instance
+        The neural network weights and biases to be updated
+    """
     if type(model) in [nn.Linear]:
         nn.init.xavier_uniform_(model.weight, gain=nn.init.calculate_gain('relu'))
         nn.init.zeros_(model.bias)
 
 
 def compute_metrics(labels, predictions):
+    """Computes evaluation matrices of the model for the validation step
+
+    Parameters
+    ----------
+    labels : torch.Tensor
+        Real labels of the data
+
+    predictions : torch.Tensor
+        Model classifications of the data
+
+    Returns
+    -------
+    dict
+        The following measurements on the validation data: Accuracy, F1,
+        Precision, Recall & AUC
+    """
     precision, recall, f1, _ = precision_recall_fscore_support(labels, predictions, average='binary')
     acc = accuracy_score(labels, predictions)
     auroc = roc_auc_score(labels, predictions)
@@ -59,6 +116,27 @@ def compute_metrics(labels, predictions):
 
 
 def train_model(model, data_loader, optim):
+    """Training mode of the neural network
+
+    Parameters
+    ----------
+    model : ClassifyNetwork instance
+        Represents a feed-forward neural network classifier
+
+    data_loader : torch.utils.data.DataLoader
+        Load data into the model via batches
+
+    optim : torch.optim
+        Optimizer of the model
+
+    Returns
+    -------
+    loss : float
+        Training loss of the model
+
+    accuracy : float
+        Training accuracy of the model
+    """
     model.train()
     running_loss = 0.0
     correct = 0
@@ -79,7 +157,27 @@ def train_model(model, data_loader, optim):
     return loss, accuracy.item()
 
 
-def eval_model(mode, model, data_loader):
+def eval_model(model, data_loader):
+    """Validation mode of the neural network
+
+    Parameters
+    ----------
+
+    model : ClassifyNetwork instance
+        Represents a feed-forward neural network classifier
+
+    data_loader : torch.utils.data.DataLoader
+        Load data into the model via batches
+
+    Returns
+    -------
+    loss : float
+        Validation loss of the model
+
+    metrics : dict
+        The following measurements on the validation data: Accuracy, F1,
+        Precision, Recall & AUC
+    """
     losses = []
     all_outputs = []
     all_labels = []
@@ -94,17 +192,48 @@ def eval_model(mode, model, data_loader):
             losses.append(loss.item())
 
         metrics = compute_metrics(all_labels, all_outputs)
-        print(f"{mode} loss: {np.mean(losses):.3f}")
-        print(f"{mode} metrics: {metrics}")
+        print(f"Validation loss: {np.mean(losses):.3f}")
+        print(f"Validation metrics: {metrics}")
     return np.mean(losses), metrics
 
 
 def load_and_reshape_data(embeddings_path):
+    """Load proteins sequences embeddings and reshape them,
+    To fit as input for the neural network
+
+    Parameters
+    ----------
+    embeddings_path : str
+        Absolute path of the proteins sequences embeddings from DistilProtBert model
+
+    Returns
+    -------
+        sequences : torch.Tensor of shape 512*64
+            embeddings in the suitable shape for the neural network classifier,
+            (512 is the maximum protein sequence length & 64 is the representation of
+            each amino acid after max pooling)
+    """
     sequences = torch.load(embeddings_path).float()
     return sequences.view(sequences.shape[0], sequences.shape[1] * sequences.shape[2])
 
 
 def load_data(natural_path, shuffled_path):
+    """Load the natural proteins sequences embeddings and the shuffled ones
+
+    Parameters
+    ----------
+    natural_path : str
+        Absolute path of the natural proteins sequences embeddings from DistilProtBert model
+
+    shuffled_path : str
+        Absolute path of the shuffled proteins sequences embeddings from DistilProtBert model
+
+    Returns
+    -------
+    (natural proteins, shuffled proteins) : (torch.Tensor of shape 512*64, torch.Tensor of shape 512*64)
+        natural / shuffled protein sequences embeddings in the suitable shape for the neural network classifier,
+        (512 is the maximum protein sequence length & 64 is the representation of each amino acid after max pooling)
+    """
     natural_proteins = load_and_reshape_data(natural_path)
     shuffled_sequences = load_and_reshape_data(shuffled_path)
     return natural_proteins, shuffled_sequences
@@ -242,7 +371,7 @@ if __name__ == '__main__':
             results_train_folds['acc'][fold, epoch] = train_acc
 
             # evaluate model
-            val_loss, val_metrics = eval_model('Val', cls_nn, val_loader)
+            val_loss, val_metrics = eval_model(cls_nn, val_loader)
             eval_folds['loss'][fold, epoch] = val_loss
             eval_folds['Accuracy'][fold, epoch] = val_metrics['Accuracy']
             eval_folds['F1'][fold, epoch] = val_metrics['F1']
