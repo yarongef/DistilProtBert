@@ -4,7 +4,7 @@
 
 Official DistilProtBert implementation, a distilled version of ProtBert-UniRef100 model.
 
-Check out our paper [DistilProtBert: A distilled protein language model used to distinguish between real proteins and their randomly shuffled counterparts](https://www.biorxiv.org/content/10.1101/2022.05.09.491157v1) for more details.
+Check out our paper [DistilProtBert: A distilled protein language model used to distinguish between real proteins and their randomly shuffled counterparts](https://doi.org/10.1093/bioinformatics/btac474) for more details.
 
 Model is available at Hugging Face model [page](https://huggingface.co/yarongef/DistilProtBert).
 
@@ -106,9 +106,8 @@ If you use this code or one of our pretrained models for your publication, pleas
 	author = {Geffen, Yaron and Ofran, Yanay and Unger, Ron},
 	title = {DistilProtBert: A distilled protein language model used to distinguish between real proteins and their randomly shuffled counterparts},
 	year = {2022},
-	doi = {10.1101/2022.05.09.491157},
-	URL = {https://www.biorxiv.org/content/early/2022/05/10/2022.05.09.491157},
-	eprint = {https://www.biorxiv.org/content/early/2022/05/10/2022.05.09.491157.full.pdf},
-	journal = {bioRxiv}
+	doi = {10.1093/bioinformatics/btac474},
+	URL = {https://doi.org/10.1093/bioinformatics/btac474},
+	journal = {Bioinformatics}
 }
 ```
